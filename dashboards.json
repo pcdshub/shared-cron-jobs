@@ -1,0 +1,16 @@
+[
+    {
+        "dashboard": "fOMF8r1nk/public-cryomodule-summary-dashboard-1",
+        "width": "1920",
+        "height": "1080",
+        "filename": "cryomodule.png",
+        "title": "Cryomodule Summary Dashboard"
+    },
+    {
+        "dashboard": "jGxBqb0MK",
+        "width": "1920",
+        "height": "1080",
+        "filename": "arch_appliance.png",
+        "title": "Archiver Appliance Statistics"
+    }
+]
