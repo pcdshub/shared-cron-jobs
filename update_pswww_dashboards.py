@@ -19,16 +19,47 @@ url_format = (
     "kiosk=tv"
 )
 
-dashboard_html = string.Template("""
-<html>
+index_link = string.Template(
+    """
+    <li>
+      <a href="${html_filename}">${title}</a>
+    </li>
+    """
+)
+index_html = string.Template(
+    """\
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset=UTF-8>
+    <title>ECS Grafana Dashboard Snapshots</title>
+  </head>
+  <body>
+    <h1>Dashboards</h1>
+    The following dashboard snapshots are available:
+    <ul>
+      ${items}
+    </ul>
+    These dashboards are updated periodically.  Images will refresh
+    automatically when available.
+  </body>
+</html>
+    """
+)
+
+dashboard_html = string.Template(
+    """\
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=UTF-8>
     <title>ECS Grafana Dashboard Snapshots - ${title}</title>
     <script>
       window.onload = function() {
         var image = document.getElementById("img");
 
         function updateImages() {
-          console.debug("Updating images...");
+          // console.debug("Updating images...");
           for (const image of document.body.getElementsByTagName("img")) {
             image.src = image.src.split("?")[0] + "?" + new Date().getTime();
           }
@@ -40,6 +71,10 @@ dashboard_html = string.Template("""
       body {
         background: #111217;
         color: white;
+      }
+      img {
+          width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -91,3 +126,12 @@ for title, filename in dashboards.items():
     html_filename = filename.split(".")[0] + ".html"
     with open(ecs_dashboards / html_filename, "wt") as fp:
         print(dashboard_html.substitute(title=title, filename=filename), file=fp)
+
+
+items = "\n".join(
+    index_link.substitute(title=title, html_filename=filename.split(".")[0] + ".html")
+    for title, filename in dashboards.items()
+)
+
+with open(ecs_dashboards / "index.html", "wt") as fp:
+    print(index_html.substitute(items=items), file=fp)
