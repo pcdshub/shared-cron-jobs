@@ -16,7 +16,7 @@ url_format = (
     "orgId=1&"
     "width={width}&"
     "height={height}&"
-    "kiosk=tv"
+    "kiosk"
 )
 
 index_link = string.Template(
