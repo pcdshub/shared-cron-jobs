@@ -65,6 +65,7 @@ dashboard_html = string.Template(
           }
         }
         setInterval(updateImages, 30000);
+        updateImages();
       }
     </script>
     <style>
@@ -78,7 +79,7 @@ dashboard_html = string.Template(
     </style>
   </head>
   <body>
-    <h1>Dashboard Snapshot - ${title}</h1>
+    <h1>${title}</h1>
     <img src="${filename}">
   </body>
 </html>
