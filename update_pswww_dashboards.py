@@ -3,6 +3,7 @@
 import json
 import pathlib
 import string
+import threading
 import urllib.request
 
 ecs_dashboards = pathlib.Path(
@@ -42,6 +43,9 @@ index_html = string.Template(
     </ul>
     These dashboards are updated periodically.  Images will refresh
     automatically when available.
+    <br />
+    <br />
+    Issues or requests? Please contact <a href="mailto:klauer at slac.stanford.edu">klauer at slac.stanford.edu</a>.
   </body>
 </html>
     """
@@ -85,9 +89,28 @@ dashboard_html = string.Template(
 </html>
 """)
 
+
+def download_thread(url: str, target_path: pathlib.Path):
+    try:
+        with urllib.request.urlopen(url) as response:
+            data = response.read()
+    except Exception as ex:
+        print(f"Failed to get dashboard {url}: {ex.__class__.__name__} {ex}")
+        return
+
+    try:
+        with open(target_path, "wb") as fp:
+            fp.write(data)
+    except Exception as ex:
+        print(f"Failed to write to {target_path}: {ex.__class__.__name__} {ex}")
+        # Still list them even if we fail once
+        # continue
+
+
 dashboard_info = json.load(open("dashboards.json"))
 
 dashboards = {}
+threads = []
 
 for info in dashboard_info:
     try:
@@ -105,22 +128,14 @@ for info in dashboard_info:
     filename = info.get("filename", f"{dashboard_uid}.png").lstrip("/")
     target_path = ecs_dashboards / filename
     title = info.get("title", target_path.stem)
+    disabled = info.get("disabled", False)
     url = url_format.format(dashboard=dashboard, width=width, height=height)
-    try:
-        with urllib.request.urlopen(url) as response:
-            data = response.read()
-    except Exception as ex:
-        print(f"Failed to get dashboard {url}: {ex.__class__.__name__} {ex}")
-        continue
-
-    try:
-        with open(target_path, "wb") as fp:
-            fp.write(data)
-    except Exception as ex:
-        print(f"Failed to write to {target_path}: {ex.__class__.__name__} {ex}")
-        continue
-
     dashboards[title] = target_path.name
+
+    if not disabled:
+        thread = threading.Thread(target=download_thread, daemon=True, kwargs=dict(url=url, target_path=target_path))
+        thread.start()
+        threads.append(thread)
 
 
 for title, filename in dashboards.items():
@@ -136,3 +151,6 @@ items = "\n".join(
 
 with open(ecs_dashboards / "index.html", "wt") as fp:
     print(index_html.substitute(items=items), file=fp)
+
+for thread in threads:
+    thread.join()

@@ -4,7 +4,15 @@
         "width": "1920",
         "height": "1200",
         "filename": "cryomodule.png",
-        "title": "Cryomodule Summary Dashboard"
+        "title": "Cryomodule Summary Dashboard",
+        "disabled": true
+    },
+    {
+        "dashboard": "3RLASy8nz",
+        "width": "1920",
+        "height": "1600",
+        "filename": "cryo_cold_compressor_commissioning.png",
+        "title": "Cryo Cold Compressor Commissioning"
     },
     {
         "dashboard": "jGxBqb0MK",

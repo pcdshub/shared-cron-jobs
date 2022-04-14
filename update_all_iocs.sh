@@ -1,11 +1,14 @@
 #!/bin/bash
 
-cd /cds/home/k/klauer/Repos/cron
+cd /cds/home/k/klauer/Repos/cron || exit 1
 
-/cds/home/k/klauer/dotfiles/bin/all_iocs > /tmp/klauer-all-iocs.json
-(cat /tmp/klauer-all-iocs.json |
-    ./json_table.py name host port alias script ) \
-    > /tmp/klauer-all-iocs.txt
+(
+    /cds/group/pcds/pyps/conda/py39/envs/pcds-5.3.0/bin/whatrecord \
+        iocmanager-loader \
+        /reg/g/pcds/pyps/config/*/iocmanager.cfg
+) > /tmp/klauer-all-iocs.json
+
+./json_table.py name host port alias script < /tmp/klauer-all-iocs.json > /tmp/klauer-all-iocs.txt
 
 # source /reg/g/pcds/pyps/conda/.tokens/typhos.sh
 source /cds/home/k/klauer/Repos/typhos/confluence.sh
