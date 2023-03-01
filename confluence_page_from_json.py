@@ -1,14 +1,13 @@
 #!/reg/g/pcds/pyps/conda/py39/envs/pcds-5.2.1/bin/python
 
+import json
 import os
 import sys
-import json
-import jinja2
-import atlassian
-import requests
-
 from typing import List, Optional, Tuple
 
+import atlassian
+import jinja2
+import requests
 
 CONFLUENCE_URL = "https://confluence.slac.stanford.edu"
 CONFLUENCE_TOKEN = os.environ.get(
