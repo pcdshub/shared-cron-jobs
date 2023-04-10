@@ -5,6 +5,9 @@ directories=(
   /cds/group/pcds/setup
   /cds/group/pcds/epics/config
   /cds/data/iocData/.all_iocs
+  /cds/data/iocCommon/rhel7-x86_64
+  /cds/data/iocCommon/All
+  /cds/data/iocCommon/hosts
 )
 
 for path in ${directories[@]}; do
