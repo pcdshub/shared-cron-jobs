@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /reg/g/pcds/engineering_tools/latest-released/scripts/pcds_conda
+
 cd /cds/home/k/klauer/Repos/module-summary || exit 1
 make summary.html
 
