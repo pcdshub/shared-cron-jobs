@@ -16,6 +16,10 @@ CONFLUENCE_TOKEN = os.environ.get(
 )
 CONFLUENCE_LABELS = []
 
+# A directory in which we store the last-published state of the Confluence
+# document - as we can no longer use HTML in our pages.
+CONFLUENCE_STATE_PATH = os.environ["CONFLUENCE_STATE_PATH"]
+
 
 class NamedTemplate:
     """
@@ -108,6 +112,30 @@ def create_client(
     return atlassian.Confluence(url, session=s)
 
 
+def get_state_filename(page_id: int) -> str:
+    return os.path.join(CONFLUENCE_STATE_PATH, f"{page_id}.json")
+
+
+def should_update(page_id: int, json_source: str) -> bool:
+    """Check whether ``page_id`` should be updated."""
+    try:
+        with open(get_state_filename(page_id)) as fp:
+            last_source = fp.read()
+    except FileNotFoundError:
+        print("Last source page not found!")
+        return True
+
+    # Compare an embedded version of the raw JSON, as confluence can
+    # rewrite our html on us
+    return last_source.strip() != json_source.strip()
+
+
+def write_state(page_id: int, json_source: str) -> None:
+    """Check whether ``page_id`` should be updated."""
+    with open(get_state_filename(page_id), "wt") as fp:
+        print(json_source, file=fp)
+
+
 def update_page(
     filename: str,
     space_and_page: str,
@@ -130,21 +158,14 @@ def update_page(
 
     page_id = existing_page["id"]
     if not existing_page:
+        print("Page not found?")
         return
 
-    # Compare an embedded version of the raw JSON, as confluence can
-    # rewrite our html on us
-    existing_source = (
-        existing_page["body"]["storage"]["value"]
-        if existing_page else ""
-    )
-    source_lines = existing_source.splitlines()
-    if not force and source_lines.count(marker) == 2:
-        source_lines = source_lines[source_lines.index(marker) + 1:]
-        existing_json = "\n".join(source_lines[:source_lines.index(marker)])
-        if existing_json.strip() == raw_json.strip():
-            return
+    if not should_update(page_id, raw_json):
+        print("Page already up-to-date; exiting")
+        return
 
+    print("Page to be updated.")
     if keys:
         columns = keys
     else:
@@ -171,9 +192,19 @@ def update_page(
         minor_edit=True,
         version_comment="confluence_page_from_json update",
     )
+
+    # Keep track for next time
+    write_state(page_id, raw_json)
     return page_info
 
 
-if __name__ == "__main__":
+def main():
+    if not os.path.isdir(CONFLUENCE_STATE_PATH):
+        raise RuntimeError("CONFLUENCE_STATE_PATH not set appropriately")
+
     filename, space_and_page, *keys = sys.argv[1:]
     update_page(filename, space_and_page, keys)
+
+
+if __name__ == "__main__":
+    main()

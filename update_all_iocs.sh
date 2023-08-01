@@ -12,6 +12,11 @@ cd /cds/home/k/klauer/Repos/cron || exit 1
 
 # source /reg/g/pcds/pyps/conda/.tokens/typhos.sh
 source /cds/home/k/klauer/Repos/typhos/confluence.sh
+
+# Location to store confluence state as we can no longer embed it directly
+# into the pages:
+export CONFLUENCE_STATE_PATH=$HOME/Repos/cron/state
+
 ./confluence_page_from_json.py \
     /tmp/klauer-all-iocs.json \
     'PCDS/EPICS IOCs Deployed in IOC Manager' \

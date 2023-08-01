@@ -1,18 +1,6 @@
 # title: {{ title }}
 # label: auto-generated
 
-<ac:structured-macro ac:name="html" ac:schema-version="1">
-  <ac:plain-text-body><![CDATA[<!--
-
-The following is the raw JSON used to make this page:
-
-{{marker}}
-{{raw_json}}
-{{marker}}
-
--->]]></ac:plain-text-body>
-</ac:structured-macro>
-
 <h2>{{ title }}</h2>
 <table>
     <thead>
