@@ -1,21 +1,4 @@
 # title: {{ title }}
 # label: auto-generated
 
-<ac:structured-macro ac:name="html" ac:schema-version="1">
-  <ac:plain-text-body><![CDATA[<!--
-
-The following is a hash of the raw HTML used to make this page:
-
-{{marker}}
-{{html_hash}}
-{{marker}}
-
--->]]></ac:plain-text-body>
-</ac:structured-macro>
-
-
-<ac:structured-macro ac:name="html" ac:schema-version="1">
-  <ac:plain-text-body><![CDATA[
-    {{ html_source | indent(4) }}
-  ]]></ac:plain-text-body>
-</ac:structured-macro>
+{{ html_source }}
