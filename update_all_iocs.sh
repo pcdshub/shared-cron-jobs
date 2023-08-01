@@ -20,7 +20,8 @@ export CONFLUENCE_STATE_PATH=$HOME/Repos/cron/state
 ./confluence_page_from_json.py \
     /tmp/klauer-all-iocs.json \
     'PCDS/EPICS IOCs Deployed in IOC Manager' \
-    name alias host port disable script binary dir config_file
+    name alias host port disable script binary dir config_file \
+  > /dev/null
 
 mv /tmp/klauer-all-iocs.json /cds/data/iocData/.all_iocs/iocs.json
 mv /tmp/klauer-all-iocs.txt /cds/data/iocData/.all_iocs/iocs.txt
