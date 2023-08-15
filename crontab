@@ -2,6 +2,7 @@
 0 0 * * * /cds/home/k/klauer/Repos/cron/sync_epics_modules.sh
 0 1 * * * /cds/home/k/klauer/Repos/cron/update_hutch_python_backup.sh
 0 1 * * * /cds/home/k/klauer/Repos/happi-to-confluence/cron_update.sh
+0 17 * * * /cds/home/k/klauer/Repos/cron/sync_device_config.sh
 0 2 * * * /cds/home/k/klauer/Repos/cron/sync_pcdshub.sh
 0 3 * * * /cds/home/k/klauer/Repos/cron/update_module_usage.sh
 0 4 * * * /cds/home/k/klauer/Repos/cron/update_plc_summary.sh
