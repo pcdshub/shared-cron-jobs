@@ -1,3 +1,4 @@
+*/10 * * * * /cds/home/k/klauer/Repos/cron/update_whatrecord_plugins.sh
 */15 * * * * /cds/home/k/klauer/Repos/cron/update_all_iocs.sh
 0 0 * * * /cds/home/k/klauer/Repos/cron/sync_epics_modules.sh
 0 1 * * * /cds/home/k/klauer/Repos/cron/update_hutch_python_backup.sh
