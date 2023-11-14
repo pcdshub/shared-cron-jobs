@@ -9,6 +9,7 @@ directories=(
   /cds/data/iocCommon/All
   /cds/data/iocCommon/hosts
   /afs/slac.stanford.edu/g/cd/swe/git/repos/slac/iocmgmt/IocManager.git
+  /afs/slac.stanford.edu/g/cd/swe/git/repos/package/epics/ioc/common/pvNotepad.git
 )
 
 for path in ${directories[@]}; do
