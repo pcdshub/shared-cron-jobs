@@ -71,11 +71,6 @@ def update_page(
         print("Unable to find existing page", existing_page)
         return
 
-    page_id = existing_page["id"]
-    if not existing_page:
-        print("Page not found?")
-        return
-
     if not should_update(page_id, raw_html):
         print("Page already up-to-date; exiting")
         return
