@@ -1,4 +1,4 @@
-#!/reg/g/pcds/pyps/conda/py39/envs/pcds-5.2.1/bin/python
+#!/cds/group/pcds/pyps/conda/py39/envs/pcds-5.2.1/bin/python
 
 import json
 import os
