@@ -45,7 +45,7 @@ index_html = string.Template(
     automatically when available.
     <br />
     <br />
-    Issues or requests? Please contact <a href="mailto:klauer at slac.stanford.edu">klauer at slac.stanford.edu</a>.
+    Issues or requests? Please contact <a href="mailto:pcds-help at slac.stanford.edu">pcds-help at slac.stanford.edu</a>.
   </body>
 </html>
     """

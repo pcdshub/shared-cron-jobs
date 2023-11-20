@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /reg/g/pcds/engineering_tools/latest-released/scripts/pcds_conda
+source /cds/group/pcds/engineering_tools/latest-released/scripts/pcds_conda
 
 device_config_directories=(
   /cds/group/pcds/pyps/apps/hutch-python/device_config

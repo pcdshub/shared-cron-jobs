@@ -1,14 +1,19 @@
 #!/bin/bash
 
-source /reg/g/pcds/engineering_tools/latest-released/scripts/pcds_conda
+source /cds/group/pcds/engineering_tools/latest-released/scripts/pcds_conda
 
 # Location to store confluence state as we can no longer embed it directly
 # into the pages:
-export CONFLUENCE_STATE_PATH=$HOME/Repos/cron/state
+export CONFLUENCE_STATE_PATH=/cds/group/pcds/shared_cron/shared-cron-jobs/state
 
-cd /cds/home/k/klauer/Repos/module-summary || exit 1
+cd /cds/group/pcds/shared_cron/epics-module-usage-summary || exit 1
 make summary.html
 
-cd /cds/home/k/klauer/Repos/cron || exit 1
-source /cds/home/k/klauer/Repos/typhos/confluence.sh
-python confluence_page_from_html.py "$HOME/Repos/module-summary/summary.html" "PCDS/EPICS Module Version Usage"
+cd /cds/group/pcds/shared_cron/shared-cron-jobs || exit 1
+
+# Whoever runs this needs their own PATs with write permissions
+# See confluence_template.sh in this repo
+# Copy to your home area with restricted read permissions and fill in username/token
+# -rwx------ 1 zlentz ps-pcds 105 Nov 17 16:05 /cds/home/z/zlentz/.confluence.sh
+source ~/.confluence.sh
+python confluence_page_from_html.py "/cds/group/pcds/shared_cron/epics-module-usage-summary/summary.html" "PCDS/EPICS Module Version Usage"

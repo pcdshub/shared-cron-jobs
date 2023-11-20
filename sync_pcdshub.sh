@@ -23,7 +23,7 @@ done
 
 
 directories=(
-  /cds/home/k/klauer/Repos/eco_tools
+  /cds/group/pcds/shared_cron/eco_tools
 )
 
 for path in ${directories[@]}; do

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source /reg/g/pcds/engineering_tools/latest-released/scripts/pcds_conda
+source /cds/group/pcds/engineering_tools/latest-released/scripts/pcds_conda
 
-cd /cds/home/k/klauer/Repos/plc-summary/docs || exit 1
+cd /cds/group/pcds/shared_cron/plc-summary/docs || exit 1
 
 set -xe
 
