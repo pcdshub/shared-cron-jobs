@@ -14,9 +14,10 @@ echo "** Working directory:"
 pwd
 
 echo "** Creating new repositories, if necessary:"
+source "${HOME}/.slac-epics.sh"
 ./create-new-slac-epics-repos.sh
 
 echo "** Synchronizing existing repositories:"
-./push2slac-epics-via-ssh.sh
+./push2slac-epics-via-pat.sh
 
 echo "Done."

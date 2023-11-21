@@ -15,5 +15,6 @@ cd ../
 make gh-pages
 
 set +xe
-git push origin master gh-pages
+source "${HOME}/.pcdshub.sh"
+git push origin-https master gh-pages
 git checkout master
