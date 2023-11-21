@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /cds/group/pcds/engineering_tools/latest-released/scripts/pcds_conda
+source "${HOME}/.pcdshub.sh"
 
 device_config_directories=(
   /cds/group/pcds/pyps/apps/hutch-python/device_config
@@ -15,7 +16,7 @@ for path in ${device_config_directories[@]}; do
   pwd
   set -x
   git commit -am "Automatic backup @ $(date)"
-  git push origin-ssh deploy || echo "Failed: git push failure '$path'"
+  git push origin-https deploy || echo "Failed: git push failure '$path'"
   gh pr create -B master -H deploy -b "$pr_body" -t "$pr_title" || echo "PR creation failed; may already exist"
   set +x
 done

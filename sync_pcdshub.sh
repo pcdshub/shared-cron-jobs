@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "${HOME}/.pcdshub.sh"
 directories=(
   /cds/group/pcds/gateway
   /cds/group/pcds/setup
@@ -17,7 +18,7 @@ for path in ${directories[@]}; do
   cd $path || (echo "Failed: Invalid path? '$path'" && continue)
   pwd
   set -x
-  git push --all pcdshub || echo "Failed: git push failure '$path'"
+  git push --all pcdshub-https || echo "Failed: git push failure '$path'"
   set +x
 done
 
@@ -33,6 +34,6 @@ for path in ${directories[@]}; do
   set -x
   git fetch --tags origin || echo "Failed: git fetch failure '$path'"
   git pull origin trunk:master trunk:trunk || echo "Failed: git pull failure '$path'"
-  git push --all pcdshub || echo "Failed: git push failure '$path'"
+  git push --all pcdshub-https || echo "Failed: git push failure '$path'"
   set +x
 done
