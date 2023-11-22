@@ -9,6 +9,6 @@ exec > "${LOG_FN}"
 # And redirect standard error to standard output:
 exec 2>&1
 
-cd /cds/group/pcds/shared_cron/whatrecord
-./run_dump_plugins_only.sh
+export HAPPI_CFG=/cds/group/pcds/pyps/apps/hutch-python/device_config/happi.cfg
+./run_whatrecord_plugins_dump.sh
 cp -f plugins-only.json.gz /cds/group/pcds/pswww/info
