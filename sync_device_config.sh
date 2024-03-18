@@ -5,6 +5,7 @@ source "${HOME}/.pcdshub.sh"
 
 device_config_directories=(
   /cds/group/pcds/pyps/apps/hutch-python/device_config
+  /cds/group/pcds/tcbsd/twincat-bsd-ansible
 )
 
 pr_title="Deploy branch status - $(date +"%B %Y")"
