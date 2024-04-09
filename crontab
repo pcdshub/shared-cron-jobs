@@ -4,6 +4,7 @@
 0 1 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_hutch_python_backup.sh
 0 1 * * * /cds/group/pcds/shared_cron/happi-to-confluence/cron_update.sh
 0 17 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_device_config.sh
+0 17 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_tcbsd_config.sh
 0 2 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_pcdshub.sh
 0 3 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_module_usage.sh
 0 4 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_plc_summary.sh
