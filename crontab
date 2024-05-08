@@ -9,3 +9,4 @@
 0 3 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_module_usage.sh
 0 4 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_plc_summary.sh
 */15 * * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_pswww_dashboards.sh
+0 0 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_atef_config.sh
