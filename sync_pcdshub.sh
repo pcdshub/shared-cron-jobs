@@ -22,18 +22,3 @@ for path in ${directories[@]}; do
   set +x
 done
 
-
-directories=(
-  /cds/group/pcds/shared_cron/eco_tools
-)
-
-for path in ${directories[@]}; do
-  echo -e "\nSynchronizing: $path"
-  cd $path || (echo "Failed: Invalid path? '$path'" && continue)
-  pwd
-  set -x
-  git fetch --tags origin || echo "Failed: git fetch failure '$path'"
-  git pull origin trunk:master trunk:trunk || echo "Failed: git pull failure '$path'"
-  git push --all pcdshub-https || echo "Failed: git push failure '$path'"
-  set +x
-done
