@@ -35,6 +35,7 @@ get_things_to_push() {
 for gitdir in ${GIT_TOP}/package/epics/modules/*.git ${GIT_TOP}/package/epics/base/base.git
 do
     pushd "$gitdir" &> /dev/null || continue
+	[ -f "disable_mirror" ] && continue
     git config --global --add safe.directory $(pwd -P) &> /dev/null
     (git remote get-url --push github-slac-https &> /dev/null) && (
         echo "* Updating $gitdir ..."
