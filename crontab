@@ -1,6 +1,5 @@
 */10 * * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_whatrecord_plugins.sh
 */15 * * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_all_iocs.sh
-0 0 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_epics_modules.sh
 0 1 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_hutch_python_backup.sh
 0 1 * * * /cds/group/pcds/shared_cron/happi-to-confluence/cron_update.sh
 0 17 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_device_config.sh
