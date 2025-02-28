@@ -34,7 +34,11 @@ pr_body="** This PR was created automatically ** This PR can be used to easily s
 
 for path in "${ui_dev_directories[@]}"; do
   echo -e "\nSynchronizing: $path"
-  cd "${path}" || echo "Failed: Invalid path? '${path}'" && continue
+  if [ ! -d "${path}" ]; then
+    echo "Failed: Invalid path? '${path}'"
+    continue
+  fi
+  cd "${path}" || continue
   pwd
   set -x
   git add -- *
