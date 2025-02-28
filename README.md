@@ -6,11 +6,6 @@ This updates our happi config
 [database](https://github.com/pcdshub/device_config) and opens a Pull Request
 from deploy (prod) to master.
 
-## ``sync_epics_modules.sh``
-
-This updates [EPICS Module Version
-Usage](https://confluence.slac.stanford.edu/display/PCDS/EPICS+Module+Version+Usage).
-
 ## ``sync_pcdshub.sh``
 
 This updates a variety of repositories on
@@ -25,6 +20,12 @@ This updates a variety of repositories on
 * [iocCommon/hosts](https://github.com/pcdshub/iocCommon-hosts)
 * [IocManager](https://github.com/pcdshub/IocManager)
 * [pvNotePad](https://github.com/pcdshub/pvNotepad)
+
+## ``sync_ui_dev.sh``
+
+This pushes deploy backups to various ui/ux repos on pcdshub.
+
+See https://confluence.slac.stanford.edu/pages/viewpage.action?pageId=573792593
 
 ## ``update_all_iocs.sh``
 

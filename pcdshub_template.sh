@@ -22,6 +22,28 @@
 #     eco_tools
 #     current-hutch-python-backup
 #     plc-summary
+#     lcls-edm-common
+#     lcls-edm-cxi
+#     lcls-edm-det
+#     lcls-edm-hxray
+#     lcls-edm-las
+#     lcls-edm-mec
+#     lcls-edm-mfx
+#     lcls-edm-xcs
+#     lcls-edm-xpp
+#     lcls-pydm-eps
+#     lcls-pydm-kfe
+#     lcls-pydm-lfe
+#     lcls-pydm-mec
+#     lcls-pydm-mirrors
+#     lcls-pydm-rix
+#     lcls-pydm-scripts
+#     lcls-pydm-sds
+#     lcls-pydm-tmo
+#     lcls-pydm-txi
+#     lcls-pydm-ued
+#     lcls-pydm-vacuum
+#     lcls-pydm-xcs
 #
 # For the user who is to run the cron jobs:
 # 1. Copy this to your home area as ~/.pcdshub.sh
