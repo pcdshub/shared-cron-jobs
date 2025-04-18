@@ -17,7 +17,7 @@ for path in "${directories[@]}"; do
   set -x
   git add -- *
   git commit -am "Automatic backup @ $(date)"
-  git push origin-https master || echo "Failed: git push failure '$path'"
+  git push pcdshub-https master || echo "Failed: git push failure '$path'"
   set +x
 done
 
