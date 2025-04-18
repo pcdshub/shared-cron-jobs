@@ -8,18 +8,25 @@ from deploy (prod) to master.
 
 ## ``sync_pcdshub.sh``
 
-This updates a variety of repositories on
+This pushes recent commits to a variety of repositories on
 [pcdshub](https://github.com/pcdshub/), including:
 
 * [gateway-setup](https://github.com/pcdshub/gateway-setup)
 * [epics-setup](https://github.com/pcdshub/epics-setup)
-* [epics-config](https://github.com/pcdshub/epics-config)
 * [all-deployed-iocs](https://github.com/pcdshub/all-deployed-iocs)
 * [iocCommon/rhel7-x86_64](https://github.com/pcdshub/iocCommon-rhel7/)
 * [iocCommon/All](https://github.com/pcdshub/iocCommon-All)
 * [iocCommon/hosts](https://github.com/pcdshub/iocCommon-hosts)
 * [IocManager](https://github.com/pcdshub/IocManager)
 * [pvNotePad](https://github.com/pcdshub/pvNotepad)
+
+## ``sync_pcdshub_auto_commit.sh``
+
+This is an extension of sync_pcdshub.sh that also creates new commits.
+It manages:
+
+* [epics-config](https://github.com/pcdshub/epics-config) (which is `/cds/group/pcds/pyps/config`)
+
 
 ## ``sync_ui_dev.sh``
 
