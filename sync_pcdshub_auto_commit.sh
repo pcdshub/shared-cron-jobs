@@ -3,12 +3,7 @@
 # shellcheck disable=SC1091
 source "${HOME}/.pcdshub.sh"
 directories=(
-  /cds/group/pcds/gateway
-  /cds/group/pcds/setup
-  /cds/data/iocData/.all_iocs
-  /cds/data/iocCommon/rhel7-x86_64
-  /cds/data/iocCommon/All
-  /cds/data/iocCommon/hosts
+  /cds/group/pcds/pyps/config
 )
 
 for path in "${directories[@]}"; do
@@ -20,7 +15,9 @@ for path in "${directories[@]}"; do
   cd "${path}" || continue
   pwd
   set -x
-  git push --all pcdshub-https || echo "Failed: git push failure '$path'"
+  git add -- *
+  git commit -am "Automatic backup @ $(date)"
+  git push origin-https master || echo "Failed: git push failure '$path'"
   set +x
 done
 
