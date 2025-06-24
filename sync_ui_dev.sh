@@ -17,6 +17,7 @@ ui_dev_directories=(
   /cds/group/pcds/epics-dev/screens/pydm/eps
   /cds/group/pcds/epics-dev/screens/pydm/kfe
   /cds/group/pcds/epics-dev/screens/pydm/lfe
+  /cds/group/pcds/epics-dev/screens/pydm/lucid_config
   /cds/group/pcds/epics-dev/screens/pydm/mec
   /cds/group/pcds/epics-dev/screens/pydm/mirrors
   /cds/group/pcds/epics-dev/screens/pydm/rix
