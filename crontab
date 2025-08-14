@@ -12,3 +12,4 @@
 */15 * * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_pswww_dashboards.sh
 0 0 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/sync_atef_config.sh
 0 17 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/pull_acr_pydm.sh
+0 5 * * * /cds/group/pcds/shared_cron/shared-cron-jobs/update_rocky9_status.sh
